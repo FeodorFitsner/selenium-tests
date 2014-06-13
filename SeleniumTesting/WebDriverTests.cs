@@ -21,7 +21,7 @@ namespace SeleniumTesting
             FirefoxDriver driver = new FirefoxDriver();
 
             driver.Navigate().GoToUrl("http://www.google.com");
-            IWebElement query = driver.FindElement(By.Name("q"));
+            IWebElement query = driver.GetElement(By.Name("q"));
             query.SendKeys("Selenium");
             query.Submit();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -36,7 +36,7 @@ namespace SeleniumTesting
             ChromeDriver driver = new ChromeDriver();
 
             driver.Navigate().GoToUrl("http://www.google.com");
-            IWebElement query = driver.FindElement(By.Name("q"));
+            IWebElement query = driver.GetElement(By.Name("q"));
             query.SendKeys("Selenium");
             query.Submit();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -53,13 +53,36 @@ namespace SeleniumTesting
             InternetExplorerDriver driver = new InternetExplorerDriver(new InternetExplorerOptions { IgnoreZoomLevel = true });
 
             driver.Navigate().GoToUrl("http://www.google.com");
-            IWebElement query = driver.FindElement(By.Name("q"));
+            IWebElement query = driver.GetElement(By.Name("q"));
             query.SendKeys("Selenium");
             query.Submit();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
             Assert.Equal("Selenium - Google Search", driver.Title);
             driver.Quit();
+        }
+    }
+
+    public static class WebDriverExtensions
+    {
+        public static SelectElement GetSelectElement(this IWebDriver driver, By by)
+        {
+            return new SelectElement(driver.GetElement(by));
+        }
+        public static IWebElement GetElement(this IWebDriver driver, By by)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                try
+                {
+                    return driver.FindElement(by);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception was raised on locating element: " + e.Message);
+                }
+            }
+            throw new ElementNotVisibleException(by.ToString());
         }
     }
 }
