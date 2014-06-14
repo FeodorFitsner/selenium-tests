@@ -6,6 +6,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace SeleniumTesting
         public void FireFoxTest()
         {
             FirefoxProfile profile = new FirefoxProfile();
-            profile.SetPreference("webdriver.firefox.logfile", "firefox.log");
+            profile.SetPreference("webdriver.log.file", Path.GetTempFileName());
             FirefoxDriver driver = new FirefoxDriver(profile);
 
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
