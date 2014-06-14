@@ -19,7 +19,7 @@ namespace SeleniumTesting
         public void FireFoxTest()
         {
             FirefoxProfile profile = new FirefoxProfile();
-            profile.SetPreference("extensions.logging.enabled", false);
+            profile.SetPreference("webdriver.log.file", "firefox.log");
             FirefoxDriver driver = new FirefoxDriver(profile);
 
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
