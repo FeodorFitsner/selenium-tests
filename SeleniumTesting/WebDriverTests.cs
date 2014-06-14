@@ -15,10 +15,12 @@ namespace SeleniumTesting
 {
     public class WebDriverTests
     {
-        //[Fact]
+        [Fact]
         public void FireFoxTest()
         {
-            FirefoxDriver driver = new FirefoxDriver();
+            FirefoxProfile profile = new FirefoxProfile();
+            profile.SetPreference("extensions.logging.enabled", false);
+            FirefoxDriver driver = new FirefoxDriver(profile);
 
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
             IWebElement query = driver.GetElement(By.Name("q"));
