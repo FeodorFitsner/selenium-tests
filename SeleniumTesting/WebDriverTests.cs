@@ -20,7 +20,7 @@ namespace SeleniumTesting
         public void FireFoxTest()
         {
             FirefoxProfile profile = new FirefoxProfile();
-            profile.SetPreference("webdriver.log.file", Path.GetTempFileName());
+            profile.SetPreference("webdriver.firefox.logfile", Path.GetTempFileName());
             FirefoxDriver driver = new FirefoxDriver(profile);
 
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
