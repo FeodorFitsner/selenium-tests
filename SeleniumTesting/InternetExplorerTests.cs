@@ -4,6 +4,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,13 +27,17 @@ namespace SeleniumTesting
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
             Task.Delay(TimeSpan.FromSeconds(10)).Wait();
-            IWebElement query = driver.GetElement(By.Name("q"));
-            query.SendKeys("Selenium");
-            query.Submit();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
 
-            Assert.Equal("Selenium - Google Search", driver.Title);
+            var screenshot = driver.GetScreenshot();
+            screenshot.SaveAsFile("ie-snapshot.png", ImageFormat.Png);
+
+            //IWebElement query = driver.GetElement(By.Name("q"));
+            //query.SendKeys("Selenium");
+            //query.Submit();
+            //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            //wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
+
+            //Assert.Equal("Selenium - Google Search", driver.Title);
         }
     }
 
