@@ -14,33 +14,6 @@ using Xunit;
 
 namespace SeleniumTesting
 {
-    public class WebDriverTests
-    {
-        //[Fact]
-        public void InternetExplorerTest()
-        {
-            DesiredCapabilities caps = DesiredCapabilities.InternetExplorer();
-            caps.SetCapability("ignoreZoomSetting", true);
-            InternetExplorerDriver driver = new InternetExplorerDriver(new InternetExplorerOptions { IgnoreZoomLevel = true });
-
-            driver.Navigate().GoToUrl("http://www.google.com/ncr");
-            IWebElement query = driver.GetElement(By.Name("q"));
-            query.SendKeys("Selenium");
-            query.Submit();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
-
-            try
-            {
-                Assert.Equal("Selenium - Google Search", driver.Title);
-            }
-            finally
-            {
-                driver.Quit();
-            }
-        }
-    }
-
     public static class WebDriverExtensions
     {
         public static SelectElement GetSelectElement(this IWebDriver driver, By by)

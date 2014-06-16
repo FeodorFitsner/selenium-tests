@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -12,16 +12,16 @@ using Xunit;
 
 namespace SeleniumTesting
 {
-    public class FireFoxTests : IUseFixture<FireFoxFixture>
+    public class InternetExplorerTests : IUseFixture<InternetExplorerFixture>
     {
-        FirefoxDriver driver;
+        InternetExplorerDriver driver;
 
-        public void SetFixture(FireFoxFixture data)
+        public void SetFixture(InternetExplorerFixture data)
         {
             driver = data.GetDriver();
         }
 
-        //[Fact]
+        [Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
@@ -35,16 +35,18 @@ namespace SeleniumTesting
         }
     }
 
-    public class FireFoxFixture : IDisposable
+    public class InternetExplorerFixture : IDisposable
     {
-        FirefoxDriver driver;
+        InternetExplorerDriver driver;
 
-        public FireFoxFixture()
+        public InternetExplorerFixture()
         {
-            driver = new FirefoxDriver();
+            DesiredCapabilities caps = DesiredCapabilities.InternetExplorer();
+            caps.SetCapability("ignoreZoomSetting", true);
+            driver = new InternetExplorerDriver(new InternetExplorerOptions { IgnoreZoomLevel = true });
         }
 
-        public FirefoxDriver GetDriver()
+        public InternetExplorerDriver GetDriver()
         {
             return driver;
         }

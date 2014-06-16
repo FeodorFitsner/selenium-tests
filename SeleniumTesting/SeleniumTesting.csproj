@@ -50,9 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InternetExplorerTests.cs" />
     <Compile Include="ChromeTests.cs" />
     <Compile Include="FireFoxTests.cs" />
-    <Compile Include="WebDriverTests.cs" />
+    <Compile Include="WebDriverExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
