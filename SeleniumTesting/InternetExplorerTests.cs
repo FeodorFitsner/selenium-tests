@@ -25,6 +25,7 @@ namespace SeleniumTesting
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
+            Task.Delay(TimeSpan.FromSeconds(10)).Wait();
             IWebElement query = driver.GetElement(By.Name("q"));
             query.SendKeys("Selenium");
             query.Submit();
