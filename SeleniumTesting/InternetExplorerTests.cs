@@ -28,15 +28,16 @@ namespace SeleniumTesting
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
             Task.Delay(TimeSpan.FromSeconds(5)).Wait();
 
+            IWebElement query = driver.GetElement(By.Name("q"));
+            query.SendKeys("Selenium");
+            query.Submit();
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
+
+            Assert.Equal("Selenium - Google Search", driver.Title);
+
             driver.GetScreenshot().SaveAsFile("ie-snapshot.png", ImageFormat.Png);
-
-            //IWebElement query = driver.GetElement(By.Name("q"));
-            //query.SendKeys("Selenium");
-            //query.Submit();
-            //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            //wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
-
-            Assert.Equal("Google", driver.Title);
         }
     }
 
