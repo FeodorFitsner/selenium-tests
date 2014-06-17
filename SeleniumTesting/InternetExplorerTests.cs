@@ -25,19 +25,26 @@ namespace SeleniumTesting
         [Fact]
         public void Google_com_should_return_search_results()
         {
-            driver.Navigate().GoToUrl("http://www.google.com/ncr");
-            Task.Delay(TimeSpan.FromSeconds(5)).Wait();
+            try
+            {
+                driver.Navigate().GoToUrl("http://www.google.com/ncr");
+                Task.Delay(TimeSpan.FromSeconds(5)).Wait();
 
-            IWebElement query = driver.GetElement(By.Name("q"));
-            query.SendKeys("Selenium");
-            query.Submit();
+                IWebElement query = driver.GetElement(By.Name("q"));
+                query.SendKeys("Selenium");
+                query.Submit();
 
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+                wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
 
-            Assert.Equal("Selenium - Google Search", driver.Title);
+                Assert.Equal("Selenium - Google Search", driver.Title);
 
-            driver.GetScreenshot().SaveAsFile("ie-snapshot.png", ImageFormat.Png);
+                driver.GetScreenshot().SaveAsFile("ie-snapshot.png", ImageFormat.Png);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 
