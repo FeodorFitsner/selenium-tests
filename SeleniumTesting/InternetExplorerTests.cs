@@ -61,7 +61,7 @@ namespace SeleniumTesting
             driver = new InternetExplorerDriver(service, new InternetExplorerOptions
             {
                 IgnoreZoomLevel = true,
-                ForceCreateProcessApi = true
+                ForceShellWindowsApi = true
             });
         }
 
