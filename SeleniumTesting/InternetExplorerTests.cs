@@ -47,9 +47,13 @@ namespace SeleniumTesting
 
         public InternetExplorerFixture()
         {
+            var service = InternetExplorerDriverService.CreateDefaultService();
+            service.LogFile = "ie-log.txt";
+            service.LoggingLevel = InternetExplorerDriverLogLevel.Debug;
+
             DesiredCapabilities caps = DesiredCapabilities.InternetExplorer();
             caps.SetCapability("ignoreZoomSetting", true);
-            driver = new InternetExplorerDriver(new InternetExplorerOptions { IgnoreZoomLevel = true });
+            driver = new InternetExplorerDriver(service, new InternetExplorerOptions { IgnoreZoomLevel = true });
         }
 
         public InternetExplorerDriver GetDriver()
