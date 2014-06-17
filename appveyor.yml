@@ -4,4 +4,4 @@ before_build:
   - nuget restore
 
 artifacts:
-  - path: "**\*.png"
+  - path: '**\*.png'
