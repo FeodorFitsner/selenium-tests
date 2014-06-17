@@ -58,9 +58,11 @@ namespace SeleniumTesting
             service.LogFile = "ie-log.txt";
             service.LoggingLevel = InternetExplorerDriverLogLevel.Debug;
 
-            DesiredCapabilities caps = DesiredCapabilities.InternetExplorer();
-            caps.SetCapability("ignoreZoomSetting", true);
-            driver = new InternetExplorerDriver(service, new InternetExplorerOptions { IgnoreZoomLevel = true });
+            driver = new InternetExplorerDriver(service, new InternetExplorerOptions
+            {
+                IgnoreZoomLevel = true,
+                ForceCreateProcessApi = true
+            });
         }
 
         public InternetExplorerDriver GetDriver()
