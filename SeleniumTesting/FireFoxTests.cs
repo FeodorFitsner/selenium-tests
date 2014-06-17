@@ -4,6 +4,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,8 @@ namespace SeleniumTesting
             wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
 
             Assert.Equal("Selenium - Google Search", driver.Title);
+
+            driver.GetScreenshot().SaveAsFile("firefox-snapshot.png", ImageFormat.Png);
         }
     }
 

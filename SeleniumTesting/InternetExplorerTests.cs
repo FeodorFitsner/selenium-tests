@@ -22,14 +22,13 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        [Fact]
+        //[Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
             Task.Delay(TimeSpan.FromSeconds(10)).Wait();
 
-            var screenshot = driver.GetScreenshot();
-            screenshot.SaveAsFile("ie-snapshot.png", ImageFormat.Png);
+            driver.GetScreenshot().SaveAsFile("ie-snapshot.png", ImageFormat.Png);
 
             //IWebElement query = driver.GetElement(By.Name("q"));
             //query.SendKeys("Selenium");
