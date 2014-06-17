@@ -2,3 +2,6 @@ os: test-win2012-r2
 
 before_build:
   - nuget restore
+
+artifacts:
+  - path: **\*.png
