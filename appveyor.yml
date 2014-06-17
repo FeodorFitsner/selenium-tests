@@ -1,7 +1,13 @@
 os: test-win2012-r2
 
+environment:
+  webdriver.ie.driver.loglevel: DEBUG
+  webdriver.ie.driver.logfile: ie-log.txt
+
 before_build:
+  - ECHO %webdriver.ie.driver.logfile%
   - nuget restore
 
 artifacts:
   - path: '**\*.png'
+  - path: '**\ie-log.txt'
