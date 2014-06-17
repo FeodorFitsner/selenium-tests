@@ -22,11 +22,11 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        //[Fact]
+        [Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
-            Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+            Task.Delay(TimeSpan.FromSeconds(5)).Wait();
 
             driver.GetScreenshot().SaveAsFile("ie-snapshot.png", ImageFormat.Png);
 
@@ -36,7 +36,7 @@ namespace SeleniumTesting
             //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             //wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
 
-            //Assert.Equal("Selenium - Google Search", driver.Title);
+            Assert.Equal("Google", driver.Title);
         }
     }
 
