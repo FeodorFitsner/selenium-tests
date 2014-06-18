@@ -22,7 +22,7 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        //[Fact]
+        [Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
@@ -44,6 +44,8 @@ namespace SeleniumTesting
 
         public FireFoxFixture()
         {
+            Environment.SetEnvironmentVariable("webdriver.log.file", "log-file.txt");
+            Environment.SetEnvironmentVariable("webdriver.firefox.logfile", "ff-log.txt");
             driver = new FirefoxDriver();
         }
 
