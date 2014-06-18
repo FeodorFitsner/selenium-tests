@@ -60,8 +60,7 @@ namespace SeleniumTesting
 
             driver = new InternetExplorerDriver(service, new InternetExplorerOptions
             {
-                IgnoreZoomLevel = true,
-                IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                IgnoreZoomLevel = true
             });
         }
 
