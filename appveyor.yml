@@ -1,19 +1,7 @@
 os: test-win2012-r2
 
-environment:
-  appvyr_name: appveyor
-  appvyr_pwd:
-    secure: r4EgI/yobSRX/9cBk9Fc/Q==
-
 before_build:
   - nuget restore
-
-test_script:
-  - ps: $username = $env:appvyr_name
-  - ps: $password = $env:appvyr_pwd
-  - ps: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
-  - ps: start-process -FilePath 'xunit.console.clr4.x86' -ArgumentList 'C:\projects\selenium-tests\SeleniumTesting\bin\Debug\SeleniumTesting.dll','/appveyor' -Credential $cred -WorkingDirectory 'C:\projects\selenium-tests\SeleniumTesting\bin\Debug' -LoadUserProfile -NoNewWindow -Wait
-#- ps: xunit.console.clr4.x86 "C:\projects\selenium-tests\SeleniumTesting\bin\Debug\SeleniumTesting.dll" /appveyor
 
 artifacts:
   - path: '**\*.png'
