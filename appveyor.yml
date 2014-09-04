@@ -3,7 +3,7 @@ before_build:
 
 test_script:
   - ps: $username = 'appveyor'
-  - ps: $password = 'mypassword'
+  - ps: $password = 'MyPassword12!'
   - ps: $objUser = [ADSI]("WinNT://$($env:computername)/$username")
   - ps: $objUser.SetPassword($password)
   - ps: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
