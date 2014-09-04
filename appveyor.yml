@@ -17,4 +17,4 @@ test_script:
 
 artifacts:
   - path: '**\*.png'
-  - path: '**\ie-log.txt'
+  - path: '**\*.html'

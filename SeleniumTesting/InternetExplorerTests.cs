@@ -22,7 +22,7 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        [Fact]
+        //[Fact]
         public void Google_com_should_return_search_results()
         {
             try
@@ -30,7 +30,11 @@ namespace SeleniumTesting
                 driver.Navigate().GoToUrl("http://www.google.com/ncr");
                 Task.Delay(TimeSpan.FromSeconds(5)).Wait();
 
-                IWebElement query = driver.GetElement(By.Name("q"));
+                // here you can check HTML of the page you currently have loaded in the browser
+                // and save it to the file
+                File.WriteAllText("ie-source1.html", driver.PageSource);
+
+                IWebElement query = driver.FindElement(By.Name("q"));
                 query.SendKeys("Selenium");
                 query.Submit();
 

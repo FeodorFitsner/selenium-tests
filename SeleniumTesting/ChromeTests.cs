@@ -22,14 +22,21 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        //[Fact]
+        [Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
-            IWebElement query = driver.GetElement(By.Name("q"));
+            Task.Delay(TimeSpan.FromSeconds(5)).Wait();
+
+            // here you can check HTML of the page you currently have loaded in the browser
+            // and save it to the file
+            File.WriteAllText("chrome-source-1.html", driver.PageSource);
+
+            IWebElement query = driver.FindElement(By.Name("q"));
             query.SendKeys("Selenium");
             query.Submit();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until((d) => { return d.Title.StartsWith("Selenium"); });
 
             Assert.Equal("Selenium - Google Search", driver.Title);
