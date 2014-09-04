@@ -1,5 +1,3 @@
-os: test-win2012-r2
-
 environment:
   appvyr_name: appveyor
   appvyr_pwd:
