@@ -22,7 +22,7 @@ namespace SeleniumTesting
             driver = data.GetDriver();
         }
 
-        //[Fact]
+        [Fact]
         public void Google_com_should_return_search_results()
         {
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
