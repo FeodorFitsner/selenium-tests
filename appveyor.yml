@@ -4,6 +4,7 @@ before_build:
 # overriding Chrome WebDeriver with v2.10
 install:
   - appveyor download http://chromedriver.storage.googleapis.com/2.10/chromedriver_win32.zip
+  - dir
   - 7z x chromedriver_win32.zip -y -oC:\Tools\WebDriver
 
 on_finish:
