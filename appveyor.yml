@@ -1,8 +1,8 @@
 before_build:
 - nuget restore
 - git clone https://github.com/appveyor/ci.git
-- . .\ci\scripts\set-screenresolution.ps1
-- Set-ScreenResolution 1280 1024
+- ps: . .\ci\scripts\set-screenresolution.ps1
+- ps: Set-ScreenResolution 1280 1024
 
 on_finish:
 - ps: Get-ChildItem .\*.png -Recurse | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
