@@ -1,5 +1,8 @@
 before_build:
   - nuget restore
 
+after_test:
+  - ps: .\take-screenshot.ps1
+
 on_finish:
   - ps: Get-ChildItem .\*.png -Recurse | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
