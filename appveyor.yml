@@ -1,7 +1,6 @@
 before_build:
 - nuget restore
-- git clone https://github.com/appveyor/ci.git
-- ps: . .\ci\scripts\set-screenresolution.ps1
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/set-screenresolution.ps1'))
 - ps: Set-ScreenResolution 1280 1024
 
 on_finish:
