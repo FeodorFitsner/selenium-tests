@@ -1,4 +1,4 @@
-os: test
+#os: test
 
 before_build:
   - nuget restore
