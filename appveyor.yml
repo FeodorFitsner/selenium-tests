@@ -1,5 +1,5 @@
-#os: test
-os: Visual Studio 2015
+os: test
+#os: Visual Studio 2015
 
 before_build:
   - nuget restore
