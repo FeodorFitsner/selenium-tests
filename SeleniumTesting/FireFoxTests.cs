@@ -46,7 +46,13 @@ namespace SeleniumTesting
         {
             //Environment.SetEnvironmentVariable("webdriver.log.file", "log-file.txt");
             //Environment.SetEnvironmentVariable("webdriver.firefox.logfile", "ff-log.txt");
-            driver = new FirefoxDriver(new FirefoxOptions());
+            //driver = new FirefoxDriver(new FirefoxOptions());
+            var driverService = FirefoxDriverService.CreateDefaultService();
+            driverService.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            driverService.HideCommandPromptWindow = true;
+            driverService.SuppressInitialDiagnosticInformation = true;
+            
+            driver = new FirefoxDriver(driverService, new FirefoxOptions(), TimeSpan.FromSeconds(60));            
         }
 
         public FirefoxDriver GetDriver()
