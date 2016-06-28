@@ -44,9 +44,9 @@ namespace SeleniumTesting
 
         public FireFoxFixture()
         {
-            Environment.SetEnvironmentVariable("webdriver.log.file", "log-file.txt");
-            Environment.SetEnvironmentVariable("webdriver.firefox.logfile", "ff-log.txt");
-            driver = new FirefoxDriver();
+            //Environment.SetEnvironmentVariable("webdriver.log.file", "log-file.txt");
+            //Environment.SetEnvironmentVariable("webdriver.firefox.logfile", "ff-log.txt");
+            driver = new FirefoxDriver(new FirefoxOptions());
         }
 
         public FirefoxDriver GetDriver()
