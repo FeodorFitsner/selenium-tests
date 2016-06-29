@@ -1,4 +1,4 @@
-os: test
+#os: test
 #os: Visual Studio 2015
 
 #install:
